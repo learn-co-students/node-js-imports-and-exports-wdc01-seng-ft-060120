@@ -3,6 +3,13 @@ const util = require('util');
 
 const moduleName = interface();
 
+if (userArgs.length > 1) {
+  console.warn('Warning: you provided more than one argument.');
+}
+
+
+// const moduleName = interface();
+
 try {
   const moduleToInspect = require(moduleName);
 
@@ -10,4 +17,5 @@ try {
 } catch (error) {
   console.error(`Unable to inspect module ${moduleName}.`);
   console.error(`Reason: ${error.message}`);
+  process.exitCode = 1;
 }
